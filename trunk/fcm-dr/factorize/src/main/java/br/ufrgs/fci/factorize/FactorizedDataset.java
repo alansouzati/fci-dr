@@ -314,7 +314,7 @@ public class FactorizedDataset {
         File factorizedDataset = new File(originalFolder,originalDatasetName+"_factorized.dat");
 
         if(factorizedDataset.exists()) {
-           if(factorizedDataset.delete()){
+           if(!factorizedDataset.delete()){
                System.err.println("No permission to delete existing dataset file into "+originalFolder.getAbsolutePath()+". " +
                        "Please check permissions.");
            }
