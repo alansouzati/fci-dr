@@ -21,6 +21,8 @@ public class Dataset {
 
     public static Dataset getInstance(String datasetPath) throws IOException {
 
+        datasetPath = datasetPath.replaceAll("%20", " ");
+
         File datasetFile = new File(datasetPath);
 
         Dataset dataset = new Dataset();
