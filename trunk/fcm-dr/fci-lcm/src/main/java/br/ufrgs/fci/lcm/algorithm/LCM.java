@@ -7,8 +7,10 @@ import br.ufrgs.fci.lcm.model.Transaction;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * This is the main class for the LCM algorithm
@@ -184,8 +186,8 @@ public class LCM {
         }
         for(Integer currentItem : dataset.getTransactionsItems().subList(fromIndex,dataset.getTransactionsItems().size())) {
             double support = (double) occ.getBuckets()[currentItem].getTransactions().size() / dataset.getTransactions().size();
-            DecimalFormat format = new DecimalFormat("#.##");
-            support = Double.valueOf(format.format(support));
+            NumberFormat format = new DecimalFormat("#.##");
+            support = Double.valueOf( format.getNumberInstance(Locale.US).format(support));
             if(support >= (minimumSupport / 100)
                     &&  !p.getItems().contains(currentItem)) {
                 frequentItems.add(currentItem);
